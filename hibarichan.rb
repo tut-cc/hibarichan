@@ -11,7 +11,7 @@ module Hibarichan
       settings = YAML.load_file(setting_file)
 
       # マルコフ連鎖による文章生成器の作成
-      @markov = Markov.new(settings['yahoo'])
+      @markov = Markov.new(settings['yahoo'], './knowledge.dat')
 
       # Streaming Client作成
       @stream = Twitter::Streaming::Client.new(settings['twitter'])

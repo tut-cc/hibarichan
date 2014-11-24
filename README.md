@@ -1,7 +1,7 @@
 hibarichan
 =======
 
-![ひばりちゃん](illust/hibarichan.png)
+![ひばりちゃん](illust/header.png)
 
 ひばりちゃんは，Ruby製のマルコフ連鎖Twitter botです．
 
