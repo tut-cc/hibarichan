@@ -16,7 +16,7 @@
    width="300"
    height="300"
    sodipodi:docname="hibarichan.svg"
-   inkscape:export-filename="/home/yantene/others/dev/hibarichan/illusts/hibarichan.png"
+   inkscape:export-filename="/home/yantene/others/dev/hibarichan/illust/hibarichan.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <metadata
@@ -27,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -208,13 +208,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1918"
+     inkscape:window-width="958"
      inkscape:window-height="1052"
      id="namedview3054"
      showgrid="false"
-     inkscape:zoom="2.2432354"
-     inkscape:cx="291.50736"
-     inkscape:cy="-5.5306289"
+     inkscape:zoom="0.39655174"
+     inkscape:cx="-296.64703"
+     inkscape:cy="-18.101789"
      inkscape:window-x="0"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
