@@ -33,5 +33,5 @@ hibarichanは，Ruby製のマルコフ連鎖Twitter botです．
 により提供されます．
 
 また，illust/下のイラストは，全て
-[CC 表示 3.0 非移植](http://creativecommons.org/licenses/by/3.0/)
+[CC 表示 3.0](http://creativecommons.org/licenses/by/3.0/)
 により提供されます．
