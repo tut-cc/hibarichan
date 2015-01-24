@@ -16,6 +16,8 @@
    height="95.176407"
    sodipodi:docname="default.svg"
    style="enable-background:new">
+  <title
+     id="title3082">default</title>
   <metadata
      id="metadata4782">
     <rdf:RDF>
@@ -24,8 +26,40 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>default</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:date>2014-01-23</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>https://github.com/yantene/hibarichan</dc:source>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <defs
@@ -39,12 +73,12 @@
      guidetolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:window-width="1918"
+     inkscape:window-width="1246"
      inkscape:window-height="1052"
      id="namedview4778"
      showgrid="false"
      inkscape:zoom="1.4142136"
-     inkscape:cx="51.288602"
+     inkscape:cx="-153.77236"
      inkscape:cy="67.121861"
      inkscape:window-x="0"
      inkscape:window-y="26"
@@ -183,7 +217,7 @@
        sodipodi:cy="414.91571"
        sodipodi:rx="25.205223"
        sodipodi:ry="25.434362"
-       d="m 492.64754,414.91571 a 25.205223,25.434362 0 1 1 -50.41044,0 25.205223,25.434362 0 1 1 50.41044,0 z" />
+       d="m 492.64754,414.91571 c 0,14.04701 -11.28476,25.43436 -25.20522,25.43436 -13.92046,0 -25.20522,-11.38735 -25.20522,-25.43436 0,-14.04701 11.28476,-25.43436 25.20522,-25.43436 13.92046,0 25.20522,11.38735 25.20522,25.43436 z" />
     <path
        sodipodi:type="arc"
        style="fill:#061c05;fill-opacity:1;stroke:none;enable-background:new"
@@ -192,7 +226,7 @@
        sodipodi:cy="355.56885"
        sodipodi:rx="34.370762"
        sodipodi:ry="34.370762"
-       d="m 446.36161,355.56885 a 34.370762,34.370762 0 1 1 -68.74153,0 34.370762,34.370762 0 1 1 68.74153,0 z"
+       d="m 446.36161,355.56885 c 0,18.98245 -15.38832,34.37076 -34.37077,34.37076 -18.98244,0 -34.37076,-15.38831 -34.37076,-34.37076 0,-18.98245 15.38832,-34.37076 34.37076,-34.37076 18.98245,0 34.37077,15.38831 34.37077,34.37076 z"
        transform="matrix(0.28906488,0,0,0.34687786,-197.73591,-50.021905)" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:none;enable-background:new"

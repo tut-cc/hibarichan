@@ -16,6 +16,8 @@
    height="40.002956"
    sodipodi:docname="close.svg"
    style="enable-background:new">
+  <title
+     id="title3084">close</title>
   <metadata
      id="metadata4782">
     <rdf:RDF>
@@ -24,8 +26,40 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>close</dc:title>
+        <dc:date>2014-01-22</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>https://github.com/yantene/hibarichan</dc:source>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <defs
@@ -39,14 +73,14 @@
      guidetolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:window-width="958"
+     inkscape:window-width="1918"
      inkscape:window-height="1052"
      id="namedview4778"
      showgrid="false"
      inkscape:zoom="1"
      inkscape:cx="-60.060074"
      inkscape:cy="164.77363"
-     inkscape:window-x="960"
+     inkscape:window-x="0"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer5"
