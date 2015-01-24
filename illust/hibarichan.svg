@@ -19,6 +19,8 @@
    inkscape:export-filename="/home/yantene/others/dev/hibarichan/illust/neohibari/neohibari.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
+  <title
+     id="title4919">hibarichan</title>
   <defs
      id="defs6584">
     <linearGradient
@@ -664,12 +666,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="129.49975"
+     inkscape:cx="26.969269"
      inkscape:cy="684.49477"
      inkscape:document-units="px"
      inkscape:current-layer="layer7"
      showgrid="false"
-     inkscape:window-width="1418"
+     inkscape:window-width="842"
      inkscape:window-height="1052"
      inkscape:window-x="0"
      inkscape:window-y="26"
@@ -684,8 +686,40 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>hibarichan</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:date>2015-01-23</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>https://github.com/yantene/hibarichan</dc:source>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g

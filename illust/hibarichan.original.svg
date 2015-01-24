@@ -15,10 +15,12 @@
    inkscape:version="0.48.5 r10040"
    width="300"
    height="1200"
-   sodipodi:docname="hibarichan.svg"
+   sodipodi:docname="hibarichan.original.svg"
    inkscape:export-filename="/home/yantene/others/dev/hibarichan/illust/hibarichan.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
+  <title
+     id="title4921">hibarichan(original)</title>
   <metadata
      id="metadata3058">
     <rdf:RDF>
@@ -27,8 +29,40 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>hibarichan(original)</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:date>2014-11-23</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>yantene</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:source>https://github.com/yantene/hibarichan</dc:source>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <defs
@@ -317,8 +351,8 @@
      id="namedview3054"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="-242.88247"
-     inkscape:cy="317.75718"
+     inkscape:cx="-387.88247"
+     inkscape:cy="877.75718"
      inkscape:window-x="0"
      inkscape:window-y="26"
      inkscape:window-maximized="0"
