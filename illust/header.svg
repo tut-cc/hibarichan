@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="header.svg">
+   sodipodi:docname="header.svg"
+   inkscape:export-filename="/home/yantene/others/dev/hibarichan/illust/header.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <radialGradient
@@ -660,9 +663,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.69999999"
-     inkscape:cx="615.29393"
-     inkscape:cy="211.1462"
+     inkscape:zoom="0.49497474"
+     inkscape:cx="780.59264"
+     inkscape:cy="-22.28328"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -670,7 +673,7 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1918"
+     inkscape:window-width="958"
      inkscape:window-height="1052"
      inkscape:window-x="0"
      inkscape:window-y="26"
@@ -683,7 +686,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1138,16 +1141,16 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:220px;font-style:normal;font-variant:normal;font-weight:100;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#6d641e;fill-opacity:1;stroke:none;font-family:'Rounded M+ 2c';-inkscape-font-specification:'Rounded M+ 2c Thin'"
-       x="-401.71283"
+       style="font-size:225px;font-style:normal;font-variant:normal;font-stretch:normal;line-height:125%;letter-spacing:-5.80000305px;word-spacing:0px;fill:#6d641e;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Semi-Light"
+       x="-397.71283"
        y="734.14905"
        id="text3598"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3600"
-         x="-401.71283"
+         x="-397.71283"
          y="734.14905"
-         style="font-size:220px;font-style:normal;font-variant:normal;font-weight:100;font-stretch:normal;font-family:'Rounded M+ 2c';-inkscape-font-specification:'Rounded M+ 2c Thin';fill:#6d641e;fill-opacity:1">hibarichan</tspan></text>
+         style="font-size:225px;font-style:normal;font-variant:normal;font-stretch:normal;letter-spacing:-5.80000305px;fill:#6d641e;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Semi-Light">hibarichan</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3602"
