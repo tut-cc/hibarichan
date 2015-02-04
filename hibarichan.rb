@@ -3,6 +3,8 @@
 require 'twitter'
 require 'yaml'
 require './markov'
+require './plugins/speech_center'
+require 'pp'
 
 module Hibarichan
   class Hibarichan
@@ -10,44 +12,53 @@ module Hibarichan
       # YAMLを読む
       settings = YAML.load_file(setting_file)
 
-      # マルコフ連鎖による文章生成器の作成
-      @markov = Markov.new(settings['yahoo'], './knowledge.dat')
-
       # Streaming Client作成
       @stream = Twitter::Streaming::Client.new(settings['twitter'])
 
       # REST Client作成
       @rest = Twitter::REST::Client.new(settings['twitter'])
+
+      # 文章生成器作成
+      @markov = Markov.new(settings['yahoo'], './knowledge.dat')
+
+      # Speech Center作成
+      #@scenter = SpeechCenter.new(@markov)
     end
 
     def update(tweet)
-      @rest.update(tweet)
-      puts [tweet, Time.now, 'by me'].join(' ')
-    end
-
-    def push_analyzed(str)
-      puts str.collect{|a| a[0]}.join('/')
+      # @rest.update(tweet)
+      puts tweet
     end
 
     def run
+      # 自分のユーザID
       user_id = @rest.user.id
 
       @stream.user do |object|
         case object
         when Twitter::Tweet
           if object.retweeted_tweet?
-            # リツイートである
+            # 誰かのリツイートを受信した
           elsif object.in_reply_to_user_id == user_id
-            # 自分宛のツイートである
+            # 自分宛のツイートを受信した
           else
-            # その他のツイートである
-            puts [object.text, Time.now, 'by', object.source].join(' ')
+            # その他のツイートを受信した
           end
         when Twitter::DirectMessage
+          puts "DirectMessage"
+          pp object
         when Twitter::Streaming::DeletedTweet
+          puts "DeletedTweet"
+          pp object
         when Twitter::Streaming::Event
+          puts "Event"
+          pp object
         when Twitter::Streaming::FriendList
+          puts "FriendList"
+          pp object
         when Twitter::Streaming::StallWarning
+          puts "StallWarning"
+          pp object
         end
       end
     end
