@@ -25,7 +25,7 @@ module Hibarichan
       @markov = Markov.new(settings['yahoo'], @repository)
 
       # プラグインの読み込み
-      @pmanager = PluginManager.new(@rest, @markov)
+      @pmanager = PluginManager.new(@rest, @markov, @repository)
     end
 
     def run

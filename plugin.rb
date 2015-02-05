@@ -5,9 +5,10 @@ module Hibarichan
     extend PluggableLite::Plugin
 
     public
-    def initialize(rest, markov)
+    def initialize(rest, markov, repository)
       @rest = rest
       @markov = markov
+      @repository = repository
     end
 
     def on_retweet(tweet)
@@ -83,14 +84,14 @@ module Hibarichan
     # Pluginクラスをベースクラスとして登録
     register Plugin
 
-    def initialize(rest, markov)
+    def initialize(rest, markov, repository)
       # ディレクトリ登録
       PluginManager::load('plugins')
 
       # プラグインのインスタンス作成
       @plugins = []
       PluginManager::plugins.each do |plugin_class|
-        @plugins << plugin_class.new(rest, markov)
+        @plugins << plugin_class.new(rest, markov, repository)
       end
     end
 
