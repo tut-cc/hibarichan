@@ -5,14 +5,14 @@ module Hibarichan
 
     def get_next_interval
       # Box-Muller法を用い，
-      # フォロー数 * 0.8を平均，
-      # 平均 / 3を標準偏差とする正数乱数を生成
+      # フォロー数 * 0.6を平均，
+      # 平均 / 3を標準偏差とする正規乱数を生成
 
       # 結果が負の数になることも多いが，
-      # 連続ツイートが頻繁に行われるツイッターのことだ，
-      # 問題ない．
+      # 連投ツイートが行われることは自然であるため，
+      # そのままにしている．
 
-      m = @rest.user.friends_count * 0.8
+      m = @rest.user.friends_count * 0.6
       s = m / 3
 
       (s * Math::sqrt(-2 * Math::log(rand)) *
@@ -30,7 +30,7 @@ module Hibarichan
       # インターバルを減算
       @tweet_interval = (@tweet_interval || 0) - 1
 
-      puts "interval: #{@tweet_interval}"
+      print "#{@tweet_interval}, "
 
       # インターバルを終えていたら
       if @tweet_interval < 0
