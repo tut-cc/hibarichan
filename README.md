@@ -1,8 +1,8 @@
 ![ひばりちゃん](illust/header.png)
 
 hibarichanは，Ruby製のマルコフ連鎖Twitter botです．
-[@tempakuhibari](http://twitter.com/tempakuhibari)
-で稼働させる予定です．
+[@hibari_ch](http://twitter.com/tempakuhibari)
+で稼働させています．
 
 技科大生のツイートから学習を行い，
 技科大生らしく振る舞うことを目的としています．
