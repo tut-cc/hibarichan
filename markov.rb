@@ -2,22 +2,18 @@ require './analyzer'
 
 module Hibarichan
   class Markov
-    def initialize(config, path, limit = 100)
+    def initialize(config, repository, limit = 100)
       # 構文解析器作成
       @analyzer = Analyzer.new(config)
 
+      # リポジトリを保持
+      @repository = repository
+
+      # 知識データを取り出し
+      @knowledge = @repository['markov']
+
       # 文字列生成の試行回数制限
       @limit = limit
-
-      # ファイル読み込み
-      @path = path
-      if File.exist?(@path)
-        Pathname.new(@path).open('rb') do |f|
-          @knowledge = Marshal.load(f)
-        end
-      else
-        @knowledge = {}
-      end
     end
 
     SRT = 'START FLG'
@@ -61,16 +57,6 @@ module Hibarichan
         sentence << @knowledge[sentence[-2, 2]].to_a.sample
       end until sentence[-1] == STP
       sentence[2..-2].join
-    end
-
-    def save
-      # 形態素解析器のバッファを処理
-      @analyzer.execute
-
-      # 保存
-      Pathname.new(@path).open('wb') do |f|
-        Marshal.dump(@knowledge, f)
-      end
     end
   end
 end

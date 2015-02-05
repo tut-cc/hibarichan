@@ -2,9 +2,9 @@
 
 require 'twitter'
 require 'yaml'
+require './repository'
 require './markov'
 require './plugin_manager'
-require 'pp'
 
 module Hibarichan
   class Hibarichan
@@ -18,8 +18,11 @@ module Hibarichan
       # REST Client作成
       @rest = Twitter::REST::Client.new(settings['twitter'])
 
+      # リポジトリの読み込み
+      @repository = Repository.new(settings['repository'])
+
       # 文章生成器作成
-      @markov = Markov.new(settings['yahoo'], './knowledge.dat')
+      @markov = Markov.new(settings['yahoo'], @repository)
 
       # プラグインの読み込み
       @pmanager = PluginManager.new(@rest, @markov)
@@ -58,6 +61,9 @@ module Hibarichan
           # よくわからない．なんかの警告でしょ(適当)
           @pmanager.on_stallwarning(object)
         end
+
+        # リポジトリの自動セーブ
+        @repository.auto_save
       end
     end
   end
