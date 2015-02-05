@@ -1,7 +1,7 @@
 module Hibarichan
   class SpeechCenter < Plugin
 
-    RETRY_INTERVAL = 10
+    RetryInterval = 10
 
     def get_next_interval
       # Box-Muller法を用い，
@@ -40,7 +40,7 @@ module Hibarichan
         rescue
           # 文字列生成に失敗していたら
           # 次回のインターバルを早める
-          @tweet_interval = RETRY_INTERVAL
+          @tweet_interval = RetryInterval
           puts "文字列生成に失敗"
         else
           # 文字列生成に成功していればツイート
