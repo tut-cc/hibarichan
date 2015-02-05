@@ -56,10 +56,10 @@ module Hibarichan
       @markov.learn(str)
     end
 
-    def get_sentence
+    def get_sentence(length = 140)
       begin
         # 文字列生成
-        @markov.get_sentence
+        @markov.get_sentence(length)
       rescue => e
         # 例外が発生したらそのまま投げる
         raise e
