@@ -4,7 +4,7 @@ require 'twitter'
 require 'yaml'
 require './repository'
 require './markov'
-require './plugin_manager'
+require './plugin'
 
 module Hibarichan
   class Hibarichan
