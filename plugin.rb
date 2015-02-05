@@ -48,8 +48,7 @@ module Hibarichan
 
     private
     def update(tweet)
-      # @rest.update(tweet)
-      puts "「#{tweet}」"
+      @rest.update(tweet)
     end
 
     def learn(str)
