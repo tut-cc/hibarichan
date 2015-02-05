@@ -1,6 +1,8 @@
 module Hibarichan
   class SpeechCenter < Plugin
 
+    # ツイートの生成が出来なかった際に，
+    # もう一度それを試みるまでの間隔
     RetryInterval = 10
 
     def get_next_interval
@@ -12,7 +14,12 @@ module Hibarichan
       # 連投ツイートが行われることは自然であるため，
       # そのままにしている．
 
-      m = @rest.user.friends_count * 0.6
+      begin
+        m = @rest.user.friends_count * 0.6
+      rescue => e
+        p e
+      end
+
       s = m / 3
 
       (s * Math::sqrt(-2 * Math::log(rand)) *
@@ -36,7 +43,10 @@ module Hibarichan
       if @tweet_interval < 0
         # ツイートする文字列生成
         begin
+          puts "ツイートを創りだすじゃん？"
           sentence = get_sentence
+          puts "下のような文字列になったぜ．"
+          p sentence
         rescue
           # 文字列生成に失敗していたら
           # 次回のインターバルを早める

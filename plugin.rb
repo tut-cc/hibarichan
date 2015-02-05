@@ -47,8 +47,15 @@ module Hibarichan
     end
 
     private
+
     def update(tweet)
-      @rest.update(tweet)
+      begin
+        @rest.update(tweet)
+      rescue => e
+        p e
+      ensure
+        puts tweet
+      end
     end
 
     def learn(str)
