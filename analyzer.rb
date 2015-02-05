@@ -47,6 +47,7 @@ module Hibarichan
       # 形態素解析の待ち行列に追加する．
       # objには解析結果を渡すべきオブジェクトを指定する．
       # なお，objにはpush_analyzedメソッドを定義のこと．
+
       if encode(@buffer).size > AnalyzerLimit || Time.now > @timestamp + AnalyzeInterval
         # 渡された文字列を追加すると形態素解析器の上限に触れる場合，
         # または前回の解析から十分に時間が経っている場合，
@@ -56,22 +57,27 @@ module Hibarichan
 
       @buffer << sentence
       @returns << obj
-      @timestamp = Time.now
     end
 
     def execute
-      # bufferの中身を形態素解析し，
-      # その結果を元の文字列と対応付けられるようデコードし，
-      # 解析結果を渡すべきオブジェクトへ結果を返す．
-      analyzed = analyze(encode(@buffer))
-      decoded = decode(analyzed)
+      unless @buffer.empty?
+        # bufferの中身を形態素解析し，
+        # その結果を元の文字列と対応付けられるようデコードし，
+        # 解析結果を渡すべきオブジェクトへ結果を返す．
+        analyzed = analyze(encode(@buffer))
+        decoded = decode(analyzed)
 
-      @returns.size.times do |i|
-        @returns[i].push_analyzed(decoded[i])
+        @returns.size.times do |i|
+          @returns[i].push_analyzed(decoded[i])
+        end
+
+        # タイムスタンプの更新
+        @timestamp = Time.now
+
+        # バッファの初期化
+        @buffer = []
+        @returns = []
       end
-
-      @buffer = []
-      @returns = []
     end
 
     def analyze(sentence)
@@ -86,8 +92,6 @@ module Hibarichan
     end
 
     def request(sentence)
-      puts 'request'
-      puts sentence
       # 文字列を形態素解析器に渡し，解析結果のXMLを返す
       Net::HTTP.start(AnalyzerURI.host, AnalyzerURI.port) do |http|
         header = {'User-Agent' => "Yahoo AppID: #{@appid}"}

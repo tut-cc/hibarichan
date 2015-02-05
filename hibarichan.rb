@@ -3,7 +3,7 @@
 require 'twitter'
 require 'yaml'
 require './markov'
-require './plugins/speech_center'
+require './plugin_manager'
 require 'pp'
 
 module Hibarichan
@@ -21,13 +21,8 @@ module Hibarichan
       # 文章生成器作成
       @markov = Markov.new(settings['yahoo'], './knowledge.dat')
 
-      # Speech Center作成
-      #@scenter = SpeechCenter.new(@markov)
-    end
-
-    def update(tweet)
-      # @rest.update(tweet)
-      puts tweet
+      # プラグインの読み込み
+      @pmanager = PluginManager.new(@rest, @markov)
     end
 
     def run
@@ -39,26 +34,29 @@ module Hibarichan
         when Twitter::Tweet
           if object.retweeted_tweet?
             # 誰かのリツイートを受信した
+            @pmanager.on_retweet(object)
           elsif object.in_reply_to_user_id == user_id
             # 自分宛のツイートを受信した
+            @pmanager.on_reply(object)
           else
             # その他のツイートを受信した
+            @pmanager.on_tweet(object)
           end
         when Twitter::DirectMessage
-          puts "DirectMessage"
-          pp object
+          # ダイレクトメッセージを受信した
+          @pmanager.on_dmessage(object)
         when Twitter::Streaming::DeletedTweet
-          puts "DeletedTweet"
-          pp object
+          # ツイートが削除された
+          @pmanager.on_delete(object)
         when Twitter::Streaming::Event
-          puts "Event"
-          pp object
+          # イベントが発生した
+          @pmanager.on_event(object)
         when Twitter::Streaming::FriendList
-          puts "FriendList"
-          pp object
+          # フレンドリストを受信した
+          @pmanager.on_friendlist(object)
         when Twitter::Streaming::StallWarning
-          puts "StallWarning"
-          pp object
+          # よくわからない．なんかの警告でしょ(適当)
+          @pmanager.on_stallwarning(object)
         end
       end
     end
