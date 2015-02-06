@@ -31,7 +31,7 @@ module Hibarichan
 
     def on_tweet(tweet)
       # 受け取ったツイートについて学習を行う
-      learn tweet_strip(tweet.text)
+      learn get_stripped_text(tweet)
 
       on_any_event
     end
@@ -39,7 +39,6 @@ module Hibarichan
     def on_any_event
       # インターバルを減算
       @tweet_interval = (@tweet_interval || 0) - 1
-
 
       # インターバルを終えていたら
       if @tweet_interval < 0

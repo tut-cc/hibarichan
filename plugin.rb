@@ -50,7 +50,8 @@ module Hibarichan
 
     def update(tweet)
       begin
-        @rest.update(tweet)
+        #@rest.update(tweet)
+        puts tweet
       rescue => e
         p e
       end
@@ -69,16 +70,52 @@ module Hibarichan
         raise e
       end
     end
+    
+    def get_stripped_text(tweet)
+      text = tweet.text.dup
 
-    def tweet_strip(tweet)
-      # アットを削除
-      tweet.gsub(/@[0-9a-zA-Z_]{1,15}/, ' ').
+      # メンションを削除
+      if tweet.user_mentions?
+        tweet.user_mentions.each do |mnt|
+          text.gsub!('@' + mnt.attrs[:screen_name], '')
+        end
+      end
 
       # ハッシュタグを削除
-      gsub(/[#＃][0-9a-zA-Z０-９ａ-ｚＡ-Ｚ〃々〻ぁ-ヿ一-鿆]/, '').
+      if tweet.hashtags?
+        tweet.hashtags.each do |htag|
+          text.gsub!('#' + htag.attrs[:text], '')
+        end
+      end
 
       # URLを削除
-      gsub(/https?:\/\/[-a-zA-Z0-9._~:\/?#@!$&'()*+,;=%]+/, ' ')
+      if tweet.uris?
+        tweet.uris.each do |uri|
+          text.gsub!(uri.attrs[:url], '')
+        end
+      end
+
+      # メディアを削除
+      if tweet.media?
+        tweet.media.each do |med|
+          text.gsub!(med.attrs[:url], '')
+        end
+      end
+
+      # シンボルを削除
+      if tweet.symbols?
+        tweet.symbols.each do |sym|
+          text.gsub!('$' + sym.attrs[:text], '')
+        end
+      end
+
+      # 連続する空白を集約
+      text.gsub!(/ +/, ' ')
+
+      # 先頭・末尾の空白の除去
+      text.strip!
+
+      text
     end
   end
 
