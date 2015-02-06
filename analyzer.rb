@@ -86,7 +86,7 @@ module Hibarichan
       result = []
       xml = REXML::Document.new(request(sentence).body)
       xml.elements.each('/ResultSet/ma_result/word_list/word') do |word|
-        result << [word[0][0], word[1][0], word[2][0]]
+        result << [word[0][0].to_s, word[1][0].to_s, word[2][0].to_s]
       end
       result
     end
