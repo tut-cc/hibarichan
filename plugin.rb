@@ -53,8 +53,6 @@ module Hibarichan
         @rest.update(tweet)
       rescue => e
         p e
-      ensure
-        puts tweet
       end
     end
 

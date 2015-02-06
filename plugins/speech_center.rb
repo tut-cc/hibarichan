@@ -4,6 +4,7 @@ module Hibarichan
     # ツイートの生成が出来なかった際に，
     # もう一度それを試みるまでの間隔
     RetryInterval = 10
+    DefaultFriendsCount = 200
 
     def get_next_interval
       # Box-Muller法を用い，
@@ -16,9 +17,11 @@ module Hibarichan
 
       begin
         m = @rest.user.friends_count * 0.6
-      rescue => e
+      rescue Twitter::Error::TooManyRequests => e
         p e
       end
+
+      m ||= DefaultFriendsCount
 
       s = m / 3
 
@@ -37,21 +40,16 @@ module Hibarichan
       # インターバルを減算
       @tweet_interval = (@tweet_interval || 0) - 1
 
-      print "#{@tweet_interval}, "
 
       # インターバルを終えていたら
       if @tweet_interval < 0
         # ツイートする文字列生成
         begin
-          puts "ツイートを創りだすじゃん？"
           sentence = get_sentence
-          puts "下のような文字列になったぜ．"
-          p sentence
         rescue
           # 文字列生成に失敗していたら
           # 次回のインターバルを早める
           @tweet_interval = RetryInterval
-          puts "文字列生成に失敗"
         else
           # 文字列生成に成功していればツイート
           update sentence
