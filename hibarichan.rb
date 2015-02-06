@@ -10,7 +10,7 @@ module Hibarichan
   class Hibarichan
     def initialize(setting_file)
       # YAMLを読む
-      settings = YAML.load_file(setting_file)
+      settings = YAML::load_file(setting_file)
 
       # Streaming Client作成
       @stream = Twitter::Streaming::Client.new(settings['twitter'])
