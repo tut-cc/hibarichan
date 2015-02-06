@@ -51,8 +51,7 @@ module Hibarichan
 
     def update(tweet)
       begin
-        #@rest.update(tweet)
-        puts tweet
+        @rest.update(tweet)
       rescue => e
         p e
       end
