@@ -1,4 +1,5 @@
 require 'pluggable_lite'
+require 'cgi'
 
 module Hibarichan
   class Plugin
@@ -69,6 +70,10 @@ module Hibarichan
         # 例外が発生したらそのまま投げる
         raise e
       end
+    end
+
+    def unescape_html(text)
+      CGI::unescapeHTML(text)
     end
     
     def get_stripped_text(tweet)

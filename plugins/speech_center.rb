@@ -30,8 +30,14 @@ module Hibarichan
     end
 
     def on_tweet(tweet)
-      # 受け取ったツイートについて学習を行う
-      learn get_stripped_text(tweet)
+      # 文章以外の情報(ハッシュタグ等)をストリップ
+      stripped_text = get_stripped_text(tweet)
+
+      # 文字参照をアンエスケープ
+      unescaped_text = unescape_html(stripped_text)
+
+      # 学習
+      learn unescaped_text
 
       on_any_event
     end
