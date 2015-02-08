@@ -1,3 +1,4 @@
+require 'yaml'
 require 'pathname'
 
 module Hibarichan
@@ -5,23 +6,30 @@ module Hibarichan
 
     SaveInterval = 600
 
-    def initialize(path)
-      # ファイル読み込み
-      @path = path
-      if File.exist?(@path)
+    def initialize(setting_file_path)
+      # YAMLを読む
+      settings = YAML::load_file(setting_file_path)
+
+      # リポジトリファイル読み込み
+      @path = settings['repository']
+      if File::exist?(@path)
         Pathname.new(@path).open('rb') do |f|
-          @data = Marshal.load(f)
+          @data = Marshal::load(f)
         end
       else
         @data = {}
       end
 
+      # settingsの値にリポジトリのデータを更新
+      @data.merge!(settings)
+
       # 自動保存のためのタイムスタンプ
-      @timestamp = Time.now
+      @timestamp = Time::now
     end
 
     def [](key)
-      # キーによるハッシュ取り出し
+      # nilならとりあえずハッシュで初期化しておく．
+      # 使う側がこのハッシュを使うかどうかはおまかせで．
       @data[key] ||= {}
       @data[key]
     end
@@ -31,18 +39,18 @@ module Hibarichan
       # タイムスタンプからSaveInterval秒より過ぎていたら，
       # 自動セーブするメソッド
 
-      if Time.now > @timestamp + SaveInterval
+      if Time::now > @timestamp + SaveInterval
         # セーブする
         save
         # タイムスタンプの更新
-        @timestamp = Time.now
+        @timestamp = Time::now
       end
     end
 
     def save
       # データをファイルへ保存
       Pathname.new(@path).open('wb') do |f|
-        Marshal.dump(@data, f)
+        Marshal::dump(@data, f)
       end
     end
   end

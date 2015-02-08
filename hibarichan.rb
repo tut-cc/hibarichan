@@ -1,45 +1,41 @@
 require 'twitter'
-require 'yaml'
 require './repository'
 require './markov'
 require './plugin'
 
 module Hibarichan
   class Hibarichan
-    def initialize(setting_file)
-      # YAMLを読む
-      settings = YAML::load_file(setting_file)
+    def initialize(setting_file_path)
+      # リポジトリの読み込み
+      @repository = Repository.new(setting_file_path)
 
       # Streaming Client作成
-      @stream = Twitter::Streaming::Client.new(settings['twitter'])
+      @stream = Twitter::Streaming::Client.new(@repository['twitter_auth'])
 
       # REST Client作成
-      @rest = Twitter::REST::Client.new(settings['twitter'])
-
-      # リポジトリの読み込み
-      @repository = Repository.new(settings['repository'])
+      @rest = Twitter::REST::Client.new(@repository['twitter_auth'])
 
       # 文章生成器作成
-      @markov = Markov.new(settings['yahoo'], @repository)
+      @markov = Markov.new(@repository['yahoo_auth'], @repository['markov'])
 
       # プラグインの読み込み
       @pmanager = PluginManager.new(@rest, @markov, @repository)
+
+      # 自分自身のIDの読み出し
+      @my_id = @rest.user.id
     end
 
     def run
-      # 自分のユーザID
-      user_id = @rest.user.id
-
       @stream.user do |object|
         case object
         when Twitter::Tweet
           if object.retweeted_tweet?
             # 誰かのリツイートを受信した
             @pmanager.on_retweet(object)
-          elsif object.in_reply_to_user_id == user_id
+          elsif object.in_reply_to_user_id == @my_id
             # 自分宛のツイートを受信した
             @pmanager.on_reply(object)
-          elsif object.attrs[:user][:id] != user_id
+          elsif object.attrs[:user][:id] != @my_id
             # (自分のツイートを除く)その他のツイートを受信した
             @pmanager.on_tweet(object)
           end
