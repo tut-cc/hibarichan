@@ -41,8 +41,8 @@ module Hibarichan
           elsif object.in_reply_to_user_id == user_id
             # 自分宛のツイートを受信した
             @pmanager.on_reply(object)
-          else
-            # その他のツイートを受信した
+          elsif object.attrs[:user][:id] != user_id
+            # (自分のツイートを除く)その他のツイートを受信した
             @pmanager.on_tweet(object)
           end
         when Twitter::DirectMessage
