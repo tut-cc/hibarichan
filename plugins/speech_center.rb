@@ -8,7 +8,7 @@ module Hibarichan
 
     def get_next_interval
       # Box-Muller法を用い，
-      # フォロー数 * 0.6を平均，
+      # フォロー数 * repo('freq_coef')を平均，
       # 平均 / 3を標準偏差とする正規乱数を生成
 
       # 結果が負の数になることも多いが，
@@ -16,7 +16,7 @@ module Hibarichan
       # そのままにしている．
 
       begin
-        m = @rest.user.friends_count * 0.6
+        m = @rest.user.friends_count * (repo['freq_coef'] || 1)
       rescue Twitter::Error::TooManyRequests => e
         p e
       end
