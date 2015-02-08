@@ -61,6 +61,10 @@ module Hibarichan
       @markov.learn(str)
     end
 
+    def repo(name = self.class.name.split('::')[-1])
+      @repository[name]
+    end
+
     def get_sentence(length = 140)
       begin
         # 文字列生成
