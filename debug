@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+require './hibarichan'
+require 'pathname'
+
+# ディレクトリの移動
+Dir.chdir(File::dirname(File::expand_path(__FILE__)))
+
+# hibarichanのインスタンス作成
+hibarichan = Hibarichan::Hibarichan.new('settings.yaml')
+
+def hibarichan.run
+  # tweets配列の取り出し
+  tweets = []
+  if File::exist?('./tweets.dat')
+    Pathname.new('./tweets.dat').open('rb') do |f|
+      tweets = Marshal::load(f)
+    end
+  end
+
+  # それぞれをとりあえず実行する
+  tweets.each do |t|
+    operate(t)
+  end
+
+  @stream.user do |object|
+    # 実行する
+    operate(object)
+
+    # ツイートをtweets配列に入れ，保存
+    tweets << object
+    Pathname.new('./tweets.dat').open('wb') do |f|
+      Marshal::dump(tweets, f)
+    end
+
+    # セーブしとく
+    @repository.auto_save
+  end
+end
+
+# run
+hibarichan.run
