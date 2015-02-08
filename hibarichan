@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require './hibarichan'
+
+# ディレクトリの移動
+Dir.chdir(File::dirname(File::expand_path(__FILE__)))
+
+# hibarichanのインスタンス作成
+hibarichan = Hibarichan::Hibarichan.new('settings.yaml')
+
+# run
+hibarichan.run

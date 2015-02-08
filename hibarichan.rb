@@ -1,5 +1,3 @@
-#!/bin/ruby
-
 require 'twitter'
 require 'yaml'
 require './repository'
@@ -68,12 +66,3 @@ module Hibarichan
     end
   end
 end
-
-# ディレクトリの移動
-Dir.chdir(File.dirname(File.expand_path(__FILE__)))
-
-# インスタンスの生成
-hibarichan = Hibarichan::Hibarichan.new('settings.yaml')
-
-# run
-hibarichan.run
