@@ -49,9 +49,9 @@ module Hibarichan
 
     private
 
-    def update(tweet)
+    def update(*args)
       begin
-        @rest.update(tweet)
+        @rest.update(*args)
       rescue => e
         p e
       end
