@@ -2,10 +2,10 @@
 
 hibarichanは，Ruby製のマルコフ連鎖Twitter botです．
 [@hibari_ch](http://twitter.com/hibari_ch)
-で稼働させています．
+で稼働しています．
 
 技科大生のツイートから学習を行い，
-技科大生らしく振る舞うことを目的としています．
+技科大生らしく振る舞います．
 
 事実上，
 [ぽいふるちゃん](http://github.com/yantene/poifullchan)
@@ -14,16 +14,6 @@ hibarichanは，Ruby製のマルコフ連鎖Twitter botです．
 ソフトウェアの機能やキャラクターについての情報は，
 [hibarichan wiki](https://github.com/yantene/hibarichan/wiki)
 を参照してください．
-
-## 開発方針
-
-以下をコンセプトに開発を行っています．
-優先度順です．
-
-- マルコフ連鎖以外の機能はプラグイン式にする．
-
-- 多くの人が開発に参加できるよう，
-  多くの言語を使ってプラグインを書けるようにする．
 
 ## ライセンス
 
