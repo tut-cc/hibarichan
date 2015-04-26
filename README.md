@@ -12,7 +12,7 @@ hibarichanは，Ruby製のマルコフ連鎖Twitter botです．
 の後継となるbotです．
 
 ソフトウェアの機能やキャラクターについての情報は，
-[hibarichan wiki](https://github.com/yantene/hibarichan/wiki)
+[hibarichan wiki](https://github.com/tut-cc/hibarichan/wiki)
 を参照してください．
 
 ## ライセンス
