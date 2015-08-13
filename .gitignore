@@ -1,3 +1,10 @@
+# hibarichan
 settings.yaml
 *.dat
+
+# texteditor
 *.swp
+
+# bundler
+.bundle/
+vendor/bundle
