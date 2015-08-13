@@ -1,9 +1,15 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
+require 'optparse'
 require './hibarichan'
 
-# ディレクトリの移動
+# パラメタオプションの解析
+params = ARGV.getopts('', 'quiet', 'debug')
+$quiet = params['quiet']  # true なら状況の詳細な出力は行わない
+$debug = params['debug']  # true ならツイートの入力や出力を標準入出力に行う
+
+# カレントディレクトリの移動
 Dir.chdir(File::dirname(File::expand_path(__FILE__)))
 
 # hibarichanのインスタンス作成
