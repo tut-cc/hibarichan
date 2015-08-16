@@ -7,10 +7,7 @@ module Hibarichan
       rescue => e
         p e
       else
-        update(
-          '@' + user_name + ' ' + sentence,
-          in_reply_to_status: tweet
-        )
+        update("@#{user_name} #{sentence}", in_reply_to_status: tweet)
       end
     end
   end
