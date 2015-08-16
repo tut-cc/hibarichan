@@ -5,42 +5,41 @@ module Hibarichan
   class Plugin
     extend PluggableLite::Plugin
 
-    public
     def initialize(rest, markov, repository)
       @rest = rest
       @markov = markov
       @repository = repository
     end
 
-    def on_retweet(tweet)
+    def on_retweet(_tweet)
       on_any_event
     end
 
-    def on_reply(tweet)
+    def on_reply(_tweet)
       on_any_event
     end
 
-    def on_tweet(tweet)
+    def on_tweet(_tweet)
       on_any_event
     end
 
-    def on_dmessage(dmessage)
+    def on_dmessage(_dmessage)
       on_any_event
     end
 
-    def on_delete(tweet)
+    def on_delete(_tweet)
       on_any_event
     end
 
-    def on_event(event)
+    def on_event(_event)
       on_any_event
     end
 
-    def on_friendlist(friendlist)
+    def on_friendlist(_friendlist)
       on_any_event
     end
 
-    def on_stallwarning(stallwarning)
+    def on_stallwarning(_stallwarning)
       on_any_event
     end
 
@@ -50,11 +49,9 @@ module Hibarichan
     private
 
     def update(*args)
-      begin
-        @rest.update(*args)
-      rescue => e
-        p e
-      end
+      @rest.update(*args)
+    rescue => e
+      p e
     end
 
     def learn(str)
@@ -66,19 +63,17 @@ module Hibarichan
     end
 
     def get_sentence(length = 140)
-      begin
-        # 文字列生成
-        @markov.get_sentence(length)
-      rescue => e
-        # 例外が発生したらそのまま投げる
-        raise e
-      end
+      # 文字列生成
+      @markov.get_sentence(length)
+    rescue => e
+      # 例外が発生したらそのまま投げる
+      raise e
     end
 
     def unescape_html(text)
-      CGI::unescapeHTML(text)
+      CGI.unescapeHTML(text)
     end
-    
+
     def get_stripped_text(tweet)
       text = tweet.text.dup
 
@@ -135,11 +130,11 @@ module Hibarichan
 
     def initialize(rest, markov, repository)
       # ディレクトリ登録
-      PluginManager::load('plugins')
+      PluginManager.load('plugins')
 
       # プラグインのインスタンス作成
       @plugins = []
-      PluginManager::plugins.each do |plugin_class|
+      PluginManager.plugins.each do |plugin_class|
         @plugins << plugin_class.new(rest, markov, repository)
       end
     end

@@ -7,22 +7,22 @@ module Hibarichan
     def initialize(config)
       @appid = config['application_id']
       @secret = config['secret']
-      @buffer = [] # 
+      @buffer = [] #
       @returns = []
       @timestamp = Time.now
     end
 
-    AnalyzerURI = URI.parse('http://jlp.yahooapis.jp/MAService/V1/parse')
-    AnalyzerLimit = 10000 # 形態素解析器に渡す文字列の最大バイト数．
-    AnalyzeInterval = 600  # 形態素解析を行う時間間隔
+    ANALYZER_URI = URI.parse('http://jlp.yahooapis.jp/MAService/V1/parse')
+    ANALYZER_LIMIT = 10_000 # 形態素解析器に渡す文字列の最大バイト数．
+    ANALYZE_INTERVAL = 600  # 形態素解析を行う時間間隔
 
-    Delimiter = '　'
-    EscapeChar = ' '
+    DELIMITER = '　'
+    ESCAPE_CHAR = ' '
 
     def encode(buffer)
       # 渡された文字列の配列について，
       # 全角スペースを区切り文字とした一つの文字列にする
-      buffer.collect{|e| e.gsub(Delimiter, EscapeChar)}.join(Delimiter)
+      buffer.collect { |e| e.gsub(DELIMITER, ESCAPE_CHAR) }.join(DELIMITER)
     end
 
     def decode(analyzed)
@@ -31,7 +31,7 @@ module Hibarichan
       result = []
       temp = []
       analyzed.each do |wordi|
-        if wordi[0] == Delimiter
+        if wordi[0] == DELIMITER
           result << temp
           temp = []
         else
@@ -48,7 +48,8 @@ module Hibarichan
       # objには解析結果を渡すべきオブジェクトを指定する．
       # なお，objにはpush_analyzedメソッドを定義のこと．
 
-      if encode(@buffer).size > AnalyzerLimit || Time.now > @timestamp + AnalyzeInterval
+      if encode(@buffer).size > ANALYZER_LIMIT ||
+         Time.now > @timestamp + ANALYZE_INTERVAL
         # 渡された文字列を追加すると形態素解析器の上限に触れる場合，
         # または前回の解析から十分に時間が経っている場合，
         # 待ち行列の中身を処理する
@@ -60,24 +61,25 @@ module Hibarichan
     end
 
     def execute
-      unless @buffer.empty?
-        # bufferの中身を形態素解析し，
-        # その結果を元の文字列と対応付けられるようデコードし，
-        # 解析結果を渡すべきオブジェクトへ結果を返す．
-        analyzed = analyze(encode(@buffer))
-        decoded = decode(analyzed)
+      # @buffer が空なら何もしない
+      return if @buffer.empty?
 
-        @returns.size.times do |i|
-          @returns[i].push_analyzed(decoded[i])
-        end
+      # bufferの中身を形態素解析し，
+      # その結果を元の文字列と対応付けられるようデコードし，
+      # 解析結果を渡すべきオブジェクトへ結果を返す．
+      analyzed = analyze(encode(@buffer))
+      decoded = decode(analyzed)
 
-        # タイムスタンプの更新
-        @timestamp = Time.now
-
-        # バッファの初期化
-        @buffer = []
-        @returns = []
+      @returns.size.times do |i|
+        @returns[i].push_analyzed(decoded[i])
       end
+
+      # タイムスタンプの更新
+      @timestamp = Time.now
+
+      # バッファの初期化
+      @buffer = []
+      @returns = []
     end
 
     def analyze(sentence)
@@ -93,10 +95,10 @@ module Hibarichan
 
     def request(sentence)
       # 文字列を形態素解析器に渡し，解析結果のXMLを返す
-      Net::HTTP.start(AnalyzerURI.host, AnalyzerURI.port) do |http|
-        header = {'User-Agent' => "Yahoo AppID: #{@appid}"}
+      Net::HTTP.start(ANALYZER_URI.host, ANALYZER_URI.port) do |http|
+        header = { 'User-Agent' => "Yahoo AppID: #{@appid}" }
         body = "sentence=#{sentence}"
-        http.post(AnalyzerURI.path, body, header)
+        http.post(ANALYZER_URI.path, body, header)
       end
     end
   end

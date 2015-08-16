@@ -3,18 +3,17 @@ require 'pathname'
 
 module Hibarichan
   class Repository
-
-    SaveInterval = 600
+    SAVE_INTERVAL = 600
 
     def initialize(setting_file_path)
       # YAMLを読む
-      settings = YAML::load_file(setting_file_path)
+      settings = YAML.load_file(setting_file_path)
 
       # リポジトリファイル読み込み
       @path = settings['repository']
-      if File::exist?(@path)
+      if File.exist?(@path)
         Pathname.new(@path).open('rb') do |f|
-          @data = Marshal::load(f)
+          @data = Marshal.load(f)
         end
       else
         @data = {}
@@ -24,7 +23,7 @@ module Hibarichan
       @data.merge!(settings)
 
       # 自動保存のためのタイムスタンプ
-      @timestamp = Time::now
+      @timestamp = Time.now
     end
 
     def [](key)
@@ -39,18 +38,17 @@ module Hibarichan
       # タイムスタンプからSaveInterval秒より過ぎていたら，
       # 自動セーブするメソッド
 
-      if Time::now > @timestamp + SaveInterval
-        # セーブする
-        save
-        # タイムスタンプの更新
-        @timestamp = Time::now
-      end
+      return unless Time.now > @timestamp + SAVE_INTERVAL
+      # セーブする
+      save
+      # タイムスタンプの更新
+      @timestamp = Time.now
     end
 
     def save
       # データをファイルへ保存
       Pathname.new(@path).open('wb') do |f|
-        Marshal::dump(@data, f)
+        Marshal.dump(@data, f)
       end
     end
   end
