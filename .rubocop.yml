@@ -1,2 +1,5 @@
 AsciiComments:
   Enabled: false
+
+GlobalVars:
+  AllowedVariables: [$quiet, $debug]
