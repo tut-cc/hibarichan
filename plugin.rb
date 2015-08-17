@@ -49,7 +49,11 @@ module Hibarichan
     private
 
     def update(*args)
-      @rest.update(*args)
+      if $debug
+        puts(*args)
+      else
+        @rest.update(*args)
+      end
     rescue => e
       p e
     end
