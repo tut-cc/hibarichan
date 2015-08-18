@@ -5,9 +5,10 @@ require 'optparse'
 require './hibarichan'
 
 # パラメタオプションの解析
-params = ARGV.getopts('', 'quiet', 'debug')
+params = ARGV.getopts('', 'quiet', 'debug', 'sample')
 $quiet = params['quiet']  # true なら状況の詳細な出力は行わない
 $debug = params['debug']  # true ならツイートの入力や出力を標準入出力に行う
+$sample = params['sample']  # true ならツイートの入力として sample ツイートを使用する
 
 # カレントディレクトリの移動
 Dir.chdir(File.dirname(File.expand_path(__FILE__)))
