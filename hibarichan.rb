@@ -26,21 +26,12 @@ module Hibarichan
     end
 
     def run
-      # stream のブロックの処理
-      run_block = lambda do |object|
+      @stream.method($sample ? :sample : :user).call do |object|
         # オブジェクトの種類ごとに動作する
         operate(object)
 
         # リポジトリの自動セーブ
         @repository.auto_save
-      end
-
-      if $sample
-        # sample stream (デバッグ用)
-        @stream.sample(&run_block)
-      else
-        # user stream
-        @stream.user(&run_block)
       end
     end
 
