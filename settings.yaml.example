@@ -1,0 +1,21 @@
+# リポジトリファイルのパス
+repository: './_repo.dat'
+
+# 管理者の ID
+admin_id: 'yantene'
+
+# Twitter認証
+twitter_auth:
+  consumer_key:         '<CONSUMER_KEY>'
+  consumer_secret:      '<CONSUMER_SECRET>'
+  access_token:         '<ACCESS_TOKEN>'
+  access_token_secret:  '<ACCESS_TOKEN_SECRET>'
+
+# Yahoo! 認証
+yahoo_auth:
+  application_id:       '<APPLICATION_ID>'
+  secret:               '<SECRET>'
+
+# プラグインごとの設定
+SpeechCenter:
+  freq_coef:            0.8
